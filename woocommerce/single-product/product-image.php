@@ -32,18 +32,8 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 	'woocommerce-product-gallery--columns-' . absint( $columns ),
 	'images',
 ) );
-//$post_thumbnail_id = $product->get_image_id();
-//$attachment_ids = $product->get_gallery_image_ids();
 ?>
-<!--<div class="shop--single-gallery">
-    <div class="first fancybox"><img src="<?php /*echo wp_get_attachment_image_src($post_thumbnail_id, 'full')[0]*/?>" alt="#"></div>
-    <div class="list">
-        <?php /*foreach ($attachment_ids as $attachment_id):*/?>
-            <div class="item"><img class="fancybox" src="<?php /*echo wp_get_attachment_image_src($attachment_id)[0]*/?>" alt="#"></div>
-        <?php /*endforeach;*/?>
-    </div>
-</div>-->
-<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>"
+<div class="shop--single-image <?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>"
 	<figure class="woocommerce-product-gallery__wrapper">
 		<?php
 		if ( $product->get_image_id() ) {

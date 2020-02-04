@@ -22,6 +22,10 @@ function get_uri($path){
 	echo get_template_directory_uri() . '/' . $path;
 }
 
+function getTotalSum(){
+
+}
+
 
 
 ?>

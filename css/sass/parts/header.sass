@@ -14,6 +14,23 @@
     width: calc(100% - calc((183px + 51px)))
     +adaptive($mobile)
       display: none
+    &_shop
+      li.shop-item
+        display: flex
+        align-items: center
+        .cart_count
+          width: 26px
+          height: 26px
+          display: flex
+          align-items: center
+          justify-content: center
+          font-size: 12px
+          background: url("../img/icons/star.svg") no-repeat center
+          background-size: contain
+          margin: 0 15px
+        .cart
+          width: 26px
+          height: 26px
     &_header
       width: 100%
       display: flex

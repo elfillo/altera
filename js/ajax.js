@@ -121,3 +121,19 @@ function drawMorePost(post_type, data) {
     }
     $('.more-box').append(list);
 }
+
+function getSubTotalSum() {
+    $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        data: {
+            action: 'get_sub_total',
+        },
+        type: 'POST',
+        success: function (res) {
+            $('.cart_count').text(res + '₽');
+        },
+        error: function (res) {
+            console.log(res, 'err')
+        }
+    });
+}

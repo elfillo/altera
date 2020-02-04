@@ -113,3 +113,30 @@ $(document).ready(function () {
         $('.woocommerce-breadcrumb').text('Магазин');
     }
 });
+
+//draw cart for shop header
+
+$(document).ready(function () {
+    let shopNav = $('.nav_shop ');
+    let cart = `
+            <a href="/cart/">
+                <svg class="cart" viewBox="0 0 492 492">
+                    <use xlink:href="#icon--cart"></use>
+                </svg>
+            </a>`;
+    let count = `<div class="cart_count"></div>`;
+
+    getSubTotalSum();
+
+    if(shopNav){
+        $(".nav_shop li a").each(function () {
+            this.pathname == '/shop/' && $(this).parent().addClass('shop-item');
+            this.pathname == '/shop/' && $(this).addClass('active');
+            this.pathname == '/shop/' && $(this).parent().append(count);
+            this.pathname == '/shop/' && $(this).parent().append(cart);
+        });
+    }
+
+
+
+});

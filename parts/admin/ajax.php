@@ -56,4 +56,13 @@ function getMorePost(){
 add_action('wp_ajax_nopriv_show_more_post', 'getMorePost' );
 add_action('wp_ajax_show_more_post', 'getMorePost' );
 
+function getSubTotalSum(){
+	global $woocommerce;
+	echo $woocommerce->cart->subtotal;
+
+	wp_die();
+}
+
+add_action('wp_ajax_nopriv_get_sub_total', 'getSubTotalSum' );
+add_action('wp_ajax_get_sub_total', 'getSubTotalSum' );
 ?>

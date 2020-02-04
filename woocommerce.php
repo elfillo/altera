@@ -1,4 +1,4 @@
-<?php get_header()?>
+<?php get_header('shop')?>
 	<div class="container container--shop container--side-bar">
         <div class="side-bar">
             <div class="side-bar--title">Рубрикатор:</div>
