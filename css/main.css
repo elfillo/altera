@@ -1680,6 +1680,8 @@ button.button, .checkout-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
+  .shop--single .onsale {
+    display: none; }
   .shop--single-image {
     min-width: 50%;
     margin-right: 5%;
