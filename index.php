@@ -6,7 +6,12 @@ Template Name: Главная
 <?php
     $blog_link = get_page_data('blog')->guid;
     $service_link = get_page_data('services')->guid;
+    $portfolio_link = get_page_data('portfolio')->guid;
     $gallery = get_field('front_gallery', $post->ID, true);
+    $services = get_posts([
+	    'post_type' => 'post_service',
+	    'numberposts' => -1,
+    ])
 ?>
 <?php get_header()?>
 <div class="container">
@@ -29,30 +34,18 @@ Template Name: Главная
 <section class="service_list">
 	<div class="swiper-container service_list-swiper">
 		<div class="swiper-wrapper">
+            <?php foreach ($services as $service):?>
 			<div class="swiper-slide">
 				<div class="service_logo">
-					<img src="<?php get_uri('img/venik.png')?>" alt="#">
+					<img src="<?php echo get_the_post_thumbnail_url($service)?>" alt="#">
 				</div>
-				<div class="service_title">Строительство Бань</div>
-				<div class="service_content">
-					Традиционная русская баня строится из бруса или бревна. Проектирование и строительство такого рода сооружений имеет множество особенностей, так как имеет вековые традиции.
-				</div>
+				<div class="service_title"><?php echo $service->post_title?></div>
+				<div class="service_content"><?php echo $service->post_excerpt?></div>
 				<div class="service_btn">
 					<a href="<?php echo $service_link?>" class="button">Посмотреть все услуги</a>
 				</div>
 			</div>
-			<div class="swiper-slide">
-				<div class="service_logo">
-					<img src="<?php get_uri('img/venik.png')?>" alt="#">
-				</div>
-				<div class="service_title">Строительство Бань</div>
-				<div class="service_content">
-					Традиционная русская баня строится из бруса или бревна. Проектирование и строительство такого рода сооружений имеет множество особенностей, так как имеет вековые традиции.
-				</div>
-				<div class="service_btn">
-					<div class="button">Посмотреть все услуги</div>
-				</div>
-			</div>
+            <?php endforeach; unset($service)?>
 		</div>
 	</div>
 	<div class="swiper-button-next service_list-swiper_arrow service_list-swiper_arrow--right"></div>
@@ -75,7 +68,7 @@ Template Name: Главная
         портфолио, чтобы посмотреть наши лучшие работы!
     </div>
     <div class="portfolio_btn">
-        <div class="button">Посмотреть портфолио</div>
+        <a href="<?php echo $portfolio_link?>" class="button">Посмотреть портфолио</a>
     </div>
 </section>
 <section class="blog">

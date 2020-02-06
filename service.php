@@ -9,7 +9,14 @@ Template Post Type: post_service
     $service_sale_slider = get_field('service_sale_slider', $post->ID);
     $service_title_before_content = get_field('service_title_before_content', $post->ID);
     $service_title_before_best = get_field('service_title_before_best', $post->ID);
-
+    if(wp_get_post_tags($post->ID)){
+	    $tag_slug = wp_get_post_tags($post->ID)[0]->slug;
+	    $portfolio = get_posts([
+		    'post_type' => 'post_portfolio',
+		    'numberposts' => 6,
+		    'tag' =>  $tag_slug
+	    ]);
+    }
 ?>
 <?php get_header()?>
 	<div class="container">
@@ -32,41 +39,20 @@ Template Post Type: post_service
 				<?php echo apply_filters('the_content', $post->post_content);?>
 			</div>
 		</section>
-		<section class="service_best-projects">
-			<div class="service_best-projects--title"><?php echo $service_title_before_best?></div>
-			<div class="service_best-projects--list">
-				<div class="item">
-					<div class="img"><img src="<?php get_uri('img/service/best/1.jpg')?>" alt="#"></div>
-					<div class="title">Хамам для Даниила</div>
-					<div class="short_desc">Строительство хамамов</div>
-				</div>
-				<div class="item">
-					<div class="img"><img src="<?php get_uri('img/service/best/2.jpg')?>" alt="#"></div>
-					<div class="title">Хамам для Даниила</div>
-					<div class="short_desc">Строительство хамамов</div>
-				</div>
-				<div class="item">
-					<div class="img"><img src="<?php get_uri('img/service/best/3.jpg')?>" alt="#"></div>
-					<div class="title">Хамам для Даниила</div>
-					<div class="short_desc">Строительство хамамов</div>
-				</div>
-				<div class="item">
-					<div class="img"><img src="<?php get_uri('img/service/best/4.jpg')?>" alt="#"></div>
-					<div class="title">Хамам для Даниила</div>
-					<div class="short_desc">Строительство хамамов</div>
-				</div>
-				<div class="item">
-					<div class="img"><img src="<?php get_uri('img/service/best/5.jpg')?>" alt="#"></div>
-					<div class="title">Хамам для Даниила</div>
-					<div class="short_desc">Строительство хамамов</div>
-				</div>
-				<div class="item">
-					<div class="img"><img src="<?php get_uri('img/service/best/6.jpg')?>" alt="#"></div>
-					<div class="title">Хамам для Даниила</div>
-					<div class="short_desc">Строительство хамамов</div>
-				</div>
-			</div>
-		</section>
+		<?php if(isset($portfolio)):?>
+            <section class="service_best-projects">
+                <div class="service_best-projects--title"><?php echo $service_title_before_best?></div>
+                <div class="service_best-projects--list">
+                        <?php foreach ($portfolio as $item):?>
+                            <div class="item">
+                                <div class="img"><img src="<?php echo get_the_post_thumbnail_url($item)?>" alt="#"></div>
+                                <div class="title"><?php echo $item->post_title?></div>
+                                <div class="short_desc"><?php echo $item->post_excerpt?></div>
+                            </div>
+                        <?php endforeach; unset($item)?>
+                </div>
+            </section>
+		<?php endif;?>
 	</div>
 	<section class="service_advertising">
 		<div class="swiper-container service_advertising--swiper">

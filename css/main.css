@@ -761,8 +761,7 @@ a.wc-backward {
       background-image: url("../img/icons/service_swiper_arrow.png") !important;
       background-size: 117px 89px !important;
       width: 117px;
-      height: 89px;
-      display: none; }
+      height: 89px; }
       @media screen and (max-width: 1171px) {
         .about_service .service_list-swiper_arrow {
           display: block;

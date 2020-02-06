@@ -3,6 +3,13 @@
 Template Name: О компании
 */
 ?>
+<?php
+$service_link = get_page_data('services')->guid;
+$services = get_posts([
+	'post_type' => 'post_service',
+	'numberposts' => -1,
+])
+?>
 <?php get_header()?>
 <div class="container">
 	<section class="about_logo">
@@ -45,36 +52,18 @@ Template Name: О компании
 	<section class="about_service">
 		<div class="swiper-container service_list-swiper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="service_logo">
-						<img src="<?php get_uri('img/venik.png')?>" alt="#">
-					</div>
-					<div class="service_title">Строительство Бань</div>
-					<div class="service_content">
-						Традиционная русская баня строится из бруса или бревна. Проектирование и строительство такого рода сооружений имеет множество особенностей, так как имеет вековые традиции.
-					</div>
-					<div class="service_btn">
-						<div class="button">Посмотреть все услуги</div>
-					</div>
-					<div class="service_arrow">
-						<img src="<?php get_uri('img/icons/service_swiper_arrow.png')?>" alt="#">
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="service_logo">
-						<img src="<?php get_uri('img/venik.png')?>" alt="#">
-					</div>
-					<div class="service_title">Строительство Бань</div>
-					<div class="service_content">
-						Традиционная русская баня строится из бруса или бревна. Проектирование и строительство такого рода сооружений имеет множество особенностей, так как имеет вековые традиции.
-					</div>
-					<div class="service_btn">
-						<div class="button">Посмотреть все услуги</div>
-					</div>
-					<div class="service_arrow">
-						<img src="<?php get_uri('img/icons/service_swiper_arrow.png')?>" alt="#">
-					</div>
-				</div>
+				<?php foreach ($services as $service):?>
+                    <div class="swiper-slide">
+                        <div class="service_logo">
+                            <img src="<?php echo get_the_post_thumbnail_url($service)?>" alt="#">
+                        </div>
+                        <div class="service_title"><?php echo $service->post_title?></div>
+                        <div class="service_content"><?php echo $service->post_excerpt?></div>
+                        <div class="service_btn">
+                            <a href="<?php echo $service_link?>" class="button">Посмотреть все услуги</a>
+                        </div>
+                    </div>
+				<?php endforeach; unset($service)?>
 			</div>
 		</div>
 		<div class="swiper-button-next service_list-swiper_arrow service_list-swiper_arrow--right"></div>
@@ -91,7 +80,7 @@ Template Name: О компании
 					разработаем для Вас
 					индивидуальный проект!
 				</p>
-				<div class="button">Заказать планировку</div>
+				<div class="button open_modal">Заказать планировку</div>
 			</div>
 			<div class="col col_img"><img src="<?php get_uri('img/about_detail.jpg')?>" alt="#"></div>
 		</div>
