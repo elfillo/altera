@@ -4,7 +4,7 @@ Template Name: Контакты
 */
 ?>
 <?php get_header()?>
-<div class="contact">
+<div class="contact" id="map_big">
 	<div class="container">
 		<div class="contact_info">
 			<div class="title">Контакты:</div>

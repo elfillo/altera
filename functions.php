@@ -19,6 +19,7 @@ function enqueue_script(){
 add_action('wp_enqueue_scripts', 'enqueue_script');
 //header_menu
 register_nav_menu('Main', 'Основное меню');
+register_nav_menu('Footer', 'Футер меню');
 register_nav_menu('Shop', 'Магазин');
 
 //add thumbnails

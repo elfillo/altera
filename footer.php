@@ -4,34 +4,23 @@
             <a href="/" class="logo">
                 <img src="<?php echo get_template_directory_uri()?>/img/logo/logo_white.png" alt="png">
             </a>
-            <ul>
-                <li><a href="#">главная</a></li>
-                <li><a href="#">о компании</a></li>
-                <li><a href="#">реквизиты</a></li>
-                <li><a href="#">вакансии</a></li>
-                <li><a href="#">отзывы</a></li>
-                <li><a href="#">бренды</a></li>
-                <li><a href="#">блог</a></li>
-                <li><a href="#">услуги</a></li>
-                <li><a href="#">акции</a></li>
-                <li><a href="#">портфолио</a></li>
-                <li><a href="#">дизайн-проекты</a></li>
-                <li><a href="#">обслуживание объектов</a></li>
-            </ul>
+	        <?php wp_nav_menu(array('theme_location'=>'Footer') );?>
         </div>
         <div class="box box_contact">
             <p>
                 <span>Адрес:</span>
                 Иркутск,<br/>
-                ул. Пушкина, 1, корп. 1, оф. 303
+                ул. Партизанская, 63, МЦ «Эталон», 4 этаж.
             </p>
             <p>
                 <span>Телефон:</span>
-                8-800-800-80-80<br/><br/>
+                <a href="tel:+73952504202">+7(3952)504-202</a> <br/>
+                <a href="tel:+79148995787">+7914-8-995-787</a> <br/>
+                <br/><br/>
             </p>
             <p>
                 <span>Почта:</span>
-                altera@mail.ru
+                <a href="mailto:sale@irk-altera.ru">sale@irk-altera.ru</a>
             </p>
         </div>
         <div class="box">

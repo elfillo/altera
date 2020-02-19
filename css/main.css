@@ -206,7 +206,8 @@ a.wc-backward {
   width: 100%;
   height: 392px;
   margin-top: auto;
-  background: url("../img/footer_bg.png"); }
+  background: url("../img/footer_bg.png");
+  position: relative; }
   @media screen and (max-width: 1171px) {
     .footer {
       height: auto;
@@ -1371,11 +1372,7 @@ a.wc-backward {
 
 .contact {
   width: 100%;
-  height: 900px;
-  background: url("../img/contact_map.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; }
+  height: 900px; }
   @media screen and (max-width: 1171px) {
     .contact {
       height: auto;
@@ -1384,7 +1381,9 @@ a.wc-backward {
     width: 308px;
     padding: 28px 20px 20px;
     background-color: #fff;
-    margin-top: 50px; }
+    margin-top: 50px;
+    position: relative;
+    z-index: 999; }
     @media screen and (max-width: 1171px) {
       .contact_info {
         width: calc(100% + 20px);
@@ -1396,12 +1395,16 @@ a.wc-backward {
       margin-bottom: 15px;
       color: #0293D5; }
   .contact_map--mobile {
+    display: none;
     width: 100%;
     height: 400px;
     background: url("../img/contact_map.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; }
+    @media screen and (max-width: 1171px) {
+      .contact_map--mobile {
+        display: block; } }
 
 .not-found {
   width: 100vw;
@@ -1731,6 +1734,12 @@ a.wc-backward {
 
 .woocommerce-tabs {
   display: none; }
+
+.container-review {
+  width: 100%; }
+  .container-review p.has-text-color {
+    margin-top: 10px;
+    margin-bottom: 20px; }
 
 body {
   min-height: 100vh;
